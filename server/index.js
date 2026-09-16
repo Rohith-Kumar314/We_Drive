@@ -3,7 +3,6 @@ import { config } from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
 
-
 config();
 const app = express();
 
@@ -15,13 +14,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev")); // it is used to log the incoming requests to the server.
 
-app.get("/health", (req,res)=>{
-    console.log("Hit Health check url");
+app.get("/health", (req, res) => {
+  console.log("Hit Health check url");
 
-    res.status(200).json({
-        success: true,
-        message: "UP",
-    });
+  res.status(200).json({
+    success: true,
+    message: "UP",
+  });
+});
+
+// Add custom error handling middleware
+
+app.use((err, req, res, next) => {
+  console.log("ERROR STACK: ", err.stack);
+
+  res
+    .status(err.status || 500)
+    .json({ success: false, message: err.message || "Something Went Wrong" });
 });
 
 async function connectDBAndServer() {
