@@ -16,4 +16,10 @@ export async function getCurrentUser(id) {
   return currUser;
 }
 
-export async function createNewUser(newUserObject) {}
+export async function createNewUser(newUserObject) {
+  const user = await userRepository.findUserByEmail(newUserObject.email);
+  if (user) {
+    throw AppError(404, "User already exists");
+  }
+  // const newUser = await userRepository.createNewUser(ne)
+}

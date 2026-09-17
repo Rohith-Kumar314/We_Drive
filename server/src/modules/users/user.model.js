@@ -27,6 +27,6 @@ const userSchema = new Schema({
     enum: ["ADMIN", "DRIVER", "OWNER", "USER"],
     default: "USER",
   },
-});
+},{timestamps:true});
 
 export const User = model("User", userSchema);
