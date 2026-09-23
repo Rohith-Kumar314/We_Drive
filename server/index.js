@@ -3,6 +3,7 @@ import express from "express";
 import { config } from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 
 //routers
 import { authRouter } from "./src/modules/auth/auth.routes.js";
@@ -20,11 +21,12 @@ const DBURL = process.env.DBURL || "mongodb://127.0.0.1:27017/myDatabase";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(morgan("dev")); // it is used to log the incoming requests to the server.
 
 // Routing configs.,
 app.use("/auth", authRouter);
-app.use("/user",userRouter);
+app.use("/users",userRouter);
 
 app.get("/health", (req, res) => {
   console.log("Hit Health check url");

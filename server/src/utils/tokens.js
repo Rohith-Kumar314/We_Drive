@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 export function signAccessToken(payload){
     return jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn:"2h"});
