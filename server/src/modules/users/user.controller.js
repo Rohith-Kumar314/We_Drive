@@ -11,14 +11,14 @@ export const getUser = async(req,res) => {
 }
 
 export const getCurrentUser = async(req,res) => {
-    const id = req.user.id;
+    const id = req.params.id;
     const currUser = await userService.getCurrentUser(id);
     res.status(200).json({success:true,message:"User Fetched successfully", data: currUser});
 }
 
 export const createUser = async (req,res) => {
-    const newUser = await userService.createNewUser(req.body);
-    res.status(200).json({success:true, message:"User created successfully", data:newUser});
+    const newUser = await userService.createNewUser(req.user);
+    res.status(201).json({success:true, message:"User created successfully", data:newUser});
 }
 
 export const updateUser = async (req,res) => {

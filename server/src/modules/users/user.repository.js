@@ -1,4 +1,4 @@
-import { User } from "./user.model";
+import { User } from "./user.model.js";
 
 export async function findUserByEmail(email) {
   return User.findOne({ email });

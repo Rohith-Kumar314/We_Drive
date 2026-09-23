@@ -5,7 +5,7 @@ const userSchema = z.object({
   email: z.string().email(),
   password: z
     .string()
-    .minlength(4, "Password should be greater then 4 charecters"),
+    .min(4, "Password should be greater then 4 charecters"),
   age: z.number().min(18),
   role: z.enum(["ADMIN", "DRIVER", "OWNER", "USER"]).default("USER"),
 });

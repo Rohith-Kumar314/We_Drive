@@ -1,5 +1,11 @@
 import { AppError } from "../../utils/appError.js";
 import { loginService } from "./auth.service.js";
+import { createNewUser } from "../users/user.service.js";
+
+export const register = async (req,res) =>{
+  const newUser = await createNewUser(req.user);
+  res.status(201).json({success:true, message:"Registration Successful", data: newUser});
+}
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -8,10 +14,7 @@ export const login = async (req, res) => {
     throw new AppError(400, "Email and password are required");
   }
 
-  const { user, accessToken } = await loginService(
-    email,
-    password
-  );
+  const { user, accessToken } = await loginService(email, password);
 
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
@@ -34,6 +37,6 @@ export const logout = async (req, res) => {
   res.status(200).json({
     success: true,
     message: result.message,
-    data:[],
+    data: [],
   });
 };
