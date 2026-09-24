@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+html {
+  @include mat.button-overrides(
+    (
+      filled-container-shape: var(--we-radius-control),
+      outlined-container-shape: var(--we-radius-control),
+      text-container-shape: var(--we-radius-control),
+      tonal-container-shape: var(--we-radius-control),
+      protected-container-shape: var(--we-radius-control),
+    )
+  );
+
+  @include mat.card-overrides(
+    (
+      elevated-container-shape: var(--we-radius-card),
+      outlined-container-shape: var(--we-radius-card),
+    )
+  );
+
+  @include mat.dialog-overrides(
+    (
+      container-shape: var(--mat-sys-corner-large),
+    )
+  );
+
+  @include mat.snack-bar-overrides(
+    (
+      container-shape: var(--we-radius-control),
+    )
+  );
+}

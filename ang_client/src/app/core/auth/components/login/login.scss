@@ -1,0 +1,181 @@
+@use 'mixins' as *;
+
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.login {
+  display: grid;
+  min-height: 100dvh;
+
+  @include up(md) {
+    grid-template-columns: minmax(380px, 5fr) 6fr;
+  }
+}
+
+// ---------- Form side ----------
+.login__panel {
+  display: flex;
+  padding: var(--we-space-6) var(--we-page-gutter);
+  background: var(--mat-sys-surface);
+
+  @include up(md) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+.login__card {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.login__header .login__logo {
+  margin-bottom: var(--we-space-5);
+
+  @include up(md) {
+    display: none;
+  }
+}
+
+.login__title {
+  margin: 0;
+  font: var(--mat-sys-headline-small);
+}
+
+.login__subtitle {
+  margin-top: var(--we-space-1);
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-large);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--we-space-2);
+  margin-top: var(--we-space-6);
+}
+
+.login__field {
+  width: 100%;
+}
+
+.login__submit {
+  --mat-button-filled-container-height: 48px;
+  width: 100%;
+  margin-top: var(--we-space-2);
+}
+
+// Pre-styled for the pieces you'll add later (see checklist)
+.login__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--we-space-2);
+  padding: var(--we-space-3) var(--we-space-4);
+  border-radius: var(--we-radius-control);
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+  font: var(--mat-sys-body-medium);
+}
+
+.login__forgot {
+  align-self: flex-end;
+  font: var(--mat-sys-label-large);
+}
+
+.login__footer {
+  margin-top: var(--we-space-5);
+  text-align: center;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+}
+
+// ---------- Logo ----------
+.login__logo {
+  --logo-bg: var(--mat-sys-primary);
+  --logo-fg: var(--mat-sys-on-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--we-space-3);
+  font: var(--mat-sys-title-large);
+
+  &-mark {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--we-radius-control);
+    background: var(--logo-bg);
+    color: var(--logo-fg);
+  }
+}
+
+// ---------- Brand side (tablet landscape and up) ----------
+.login__brand {
+  display: none;
+
+  @include up(md) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    overflow: hidden;
+    padding: var(--we-space-7) var(--we-space-6) calc(var(--we-space-7) + var(--we-space-5));
+    background: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+
+    // Road-line motif
+    &::after {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      bottom: var(--we-space-6);
+      height: 4px;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--mat-sys-on-primary) 35%, transparent) 0 32px,
+        transparent 32px 64px
+      );
+    }
+  }
+
+  .login__logo {
+    --logo-bg: var(--mat-sys-on-primary);
+    --logo-fg: var(--mat-sys-primary);
+  }
+}
+
+.login__brand-title {
+  max-width: 16ch;
+  font: var(--mat-sys-display-small);
+  font-weight: 600;
+}
+
+.login__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--we-space-4);
+  margin: var(--we-space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  font: var(--mat-sys-body-large);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--we-space-3);
+  }
+
+  mat-icon {
+    flex: none;
+    box-sizing: content-box;
+    padding: var(--we-space-2);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--mat-sys-on-primary) 16%, transparent);
+  }
+}

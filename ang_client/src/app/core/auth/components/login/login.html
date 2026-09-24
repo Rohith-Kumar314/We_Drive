@@ -1,0 +1,62 @@
+<main class="login">
+  <section class="login__panel">
+    <div class="login__card">
+      <header class="login__header">
+        <div class="login__logo">
+          <span class="login__logo-mark">
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">directions_car</mat-icon>
+          </span>
+          <span>We_Drive</span>
+        </div>
+        <h1 class="login__title">Welcome back</h1>
+        <p class="login__subtitle">Sign in to continue to We_Drive.</p>
+      </header>
+
+      <form class="login__form" [formGroup]="loginForm" (submit)="handleLoginClick()">
+        <mat-form-field class="login__field">
+          <mat-label>Email</mat-label>
+          <mat-icon matPrefix fontSet="material-symbols-outlined" aria-hidden="true">mail</mat-icon>
+          <input
+            matInput
+            type="email"
+            inputmode="email"
+            autocomplete="email"
+            placeholder="yourgmail@domain.com"
+            formControlName="email"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="login__field">
+          <mat-label>Password</mat-label>
+          <mat-icon matPrefix fontSet="material-symbols-outlined" aria-hidden="true">lock</mat-icon>
+          <input
+            matInput
+            type="password"
+            autocomplete="current-password"
+            formControlName="password"
+          />
+        </mat-form-field>
+
+        <button mat-flat-button class="login__submit" type="submit">Sign in</button>
+      </form>
+    </div>
+  </section>
+
+  <aside class="login__brand" aria-hidden="true">
+    <div class="login__logo">
+      <span class="login__logo-mark">
+        <mat-icon fontSet="material-symbols-outlined">directions_car</mat-icon>
+      </span>
+      <span>We_Drive</span>
+    </div>
+
+    <div class="login__brand-body">
+      <p class="login__brand-title">Vehicles and drivers, booked in one place.</p>
+      <ul class="login__features">
+        <li><mat-icon fontSet="material-symbols-outlined">directions_car</mat-icon>Book a vehicle for any trip</li>
+        <li><mat-icon fontSet="material-symbols-outlined">badge</mat-icon>Find a driver when you need one</li>
+        <li><mat-icon fontSet="material-symbols-outlined">route</mat-icon>Track and manage every booking</li>
+      </ul>
+    </div>
+  </aside>
+</main>

@@ -1,0 +1,42 @@
+:focus-visible {
+  outline: 2px solid var(--mat-sys-primary);
+  outline-offset: 2px;
+}
+
+.we-text-muted { color: var(--mat-sys-on-surface-variant); }
+
+.we-surface {
+  background: var(--mat-sys-surface-container-lowest);
+  border: var(--we-border);
+  border-radius: var(--we-radius-card);
+  padding: var(--we-space-5);
+}
+
+.we-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--we-space-3);
+  border-radius: 999px;
+  font: var(--mat-sys-label-medium);
+
+  &--success { background: var(--we-success-container); color: var(--we-on-success-container); }
+  &--warning { background: var(--we-warning-container); color: var(--we-on-warning-container); }
+  &--error   { background: var(--mat-sys-error-container); color: var(--mat-sys-on-error-container); }
+  &--neutral { background: var(--mat-sys-surface-container-high); color: var(--mat-sys-on-surface-variant); }
+}
+
+.we-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

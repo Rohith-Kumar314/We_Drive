@@ -4,6 +4,7 @@ import { config } from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 //routers
 import { authRouter } from "./src/modules/auth/auth.routes.js";
@@ -23,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev")); // it is used to log the incoming requests to the server.
-
+app.use(cors());
 // Routing configs.,
 app.use("/auth", authRouter);
 app.use("/users",userRouter);

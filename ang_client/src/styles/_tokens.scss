@@ -1,0 +1,41 @@
+html {
+  // Spacing scale (4px base)
+  --we-space-1: 4px;
+  --we-space-2: 8px;
+  --we-space-3: 12px;
+  --we-space-4: 16px;
+  --we-space-5: 24px;
+  --we-space-6: 32px;
+  --we-space-7: 48px;
+
+  // Shape (also drives Material components through system tokens)
+  --mat-sys-corner-extra-small: 6px;
+  --mat-sys-corner-small: 8px;
+  --mat-sys-corner-medium: 12px;
+  --mat-sys-corner-large: 16px;
+  --mat-sys-corner-extra-large: 20px;
+  --we-radius-control: var(--mat-sys-corner-small);
+  --we-radius-card: var(--mat-sys-corner-medium);
+
+  // Semantic colors Material 3 doesn't provide (contrast-checked pairs)
+  --we-success: #1b6e3c;
+  --we-on-success: #ffffff;
+  --we-success-container: #d6f1de;
+  --we-on-success-container: #0b3a1e;
+  --we-warning: #8a5300;
+  --we-on-warning: #ffffff;
+  --we-warning-container: #ffe8c2;
+  --we-on-warning-container: #4a2c00;
+
+  // Layout
+  --we-toolbar-height: 64px;
+  --we-content-max-width: 1280px;
+  --we-page-gutter: var(--we-space-4);
+  --we-border: 1px solid var(--mat-sys-outline-variant);
+}
+
+@media (min-width: 840px) {
+  html {
+    --we-page-gutter: var(--we-space-6);
+  }
+}
