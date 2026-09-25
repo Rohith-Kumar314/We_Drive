@@ -1,0 +1,46 @@
+<div>
+    <form [formGroup]="userRegisterForm" (ngSubmit)="onRegisterClick()">
+
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" placeholder="John Doe" formControlName="username" name="username">
+        </div>
+
+        <div>
+            <label for="email">Email: </label>
+            <input type="text" placeholder="yourgmail@domain.com" formControlName="email" name="email">
+        </div>
+
+        <div>
+            <label for="age">Age: </label>
+            <input type="number" placeholder="enter your age" formControlName="age" name="age">
+        </div>
+
+        <div>
+            <label>
+                <input type="radio" formControlName="role" value="USER">
+                User
+            </label>
+            <label>
+                <input type="radio" formControlName="role" value="DRIVER">
+                Driver
+            </label>
+            <label>
+                <input type="radio" formControlName="role" value="OWNER">
+                Car Owner
+            </label>
+        </div>
+
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" placeholder="password" formControlName="password">
+        </div>
+
+        <div>
+            <label for="password">Confirm Password: </label>
+            <input type="password" placeholder="password" formControlName="confirmPassword">
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>

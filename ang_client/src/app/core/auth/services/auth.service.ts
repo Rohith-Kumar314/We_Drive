@@ -5,8 +5,10 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
 
 // Interfaces
-import { Ilogin } from "../schemas/auth.schemas";
-import { APP_ROUTES } from "../../../configs/app.routes.config";
+import { Ilogin, IRegister } from "../schemas/auth.schemas";
+
+// API Endpoints
+import { API_ENDPOINTS } from "../../../configs/app.config";
 
 @Service()
 export class AuthService{
@@ -14,10 +16,14 @@ export class AuthService{
     baseUrl = environment.apiUrl;
 
     public RequestLogin(payload:Ilogin){
-        return this.http.post(`${this.baseUrl}/${APP_ROUTES.LOGIN}`, payload);
+        return this.http.post(`${this.baseUrl}/${API_ENDPOINTS.LOGIN}`, payload);
     }
 
     public requestLogout(){
-        return this.http.post(`${this.baseUrl}/${APP_ROUTES.LOGOUT}`,{});
+        return this.http.post(`${this.baseUrl}/${API_ENDPOINTS.LOGOUT}`,{});
+    }
+
+    public registerUser(paylod:IRegister){
+        return this.http.post(`${this.baseUrl}/${API_ENDPOINTS.REGISTER}`,{paylod});
     }
 }
