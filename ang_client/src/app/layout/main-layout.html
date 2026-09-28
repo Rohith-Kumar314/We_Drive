@@ -1,0 +1,30 @@
+<header class="navbar">
+    <div class="navbar__bar we-container">
+        <a class="brand" routerLink="/" aria-label="We_Drive home">
+            <span class="brand__mark">
+                <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">directions_car</mat-icon>
+            </span>
+            <span>We_Drive</span>
+        </a>
+
+        @if (authStore.isLoggedIn()) {
+        @if (navLinks.length) {
+        <nav class="navbar__links" aria-label="Main">
+            @for (link of navLinks; track link.path) {
+            <a [routerLink]="link.path" routerLinkActive="is-active">{{ link.label }}</a>
+            }
+        </nav>
+        }
+        <button mat-stroked-button type="button" (click)="signOut()">Sign out</button>
+        } @else {
+        <div class="navbar__actions">
+            <a mat-button routerLink="/login">Sign in</a>
+            <a mat-flat-button routerLink="/register">Get started</a>
+        </div>
+        }
+    </div>
+</header>
+
+<main class="content">
+    <router-outlet />
+</main>

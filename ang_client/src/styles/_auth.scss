@@ -1,0 +1,200 @@
+@use 'mixins' as *;
+
+// Shared shell for auth pages: form on the right, brand panel on the left (tablet landscape and up).
+
+.auth {
+  display: grid;
+  min-height: 100dvh;
+
+  @include up(md) {
+    grid-template-columns: minmax(380px, 5fr) 6fr;
+  }
+
+  // ---------- Form side ----------
+  &__panel {
+    display: flex;
+    padding: var(--we-space-6) var(--we-page-gutter);
+    background: var(--mat-sys-surface);
+
+    @include up(md) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+  }
+
+  &__header .auth__logo {
+    margin-bottom: var(--we-space-5);
+
+    @include up(md) {
+      display: none;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font: var(--mat-sys-headline-small);
+  }
+
+  &__subtitle {
+    margin-top: var(--we-space-1);
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-large);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--we-space-4);
+    margin-top: var(--we-space-6);
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  &__row {
+    display: grid;
+    gap: var(--we-space-4);
+
+    @include up(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__submit {
+    --mat-button-filled-container-height: 48px;
+    width: 100%;
+    margin-top: var(--we-space-2);
+  }
+
+  &__field-error {
+    display: flex;
+    align-items: center;
+    gap: var(--we-space-2);
+    margin: calc(var(--we-space-2) * -1) 0 0;
+    color: var(--mat-sys-error);
+    font: var(--mat-sys-body-small);
+
+    mat-icon {
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+    }
+  }
+
+  &__alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--we-space-2);
+    padding: var(--we-space-3) var(--we-space-4);
+    border-radius: var(--we-radius-control);
+    background: var(--mat-sys-error-container);
+    color: var(--mat-sys-on-error-container);
+    font: var(--mat-sys-body-medium);
+  }
+
+  &__footer {
+    margin-top: var(--we-space-5);
+    text-align: center;
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-medium);
+  }
+
+  // ---------- Logo ----------
+  &__logo {
+    --logo-bg: var(--mat-sys-primary);
+    --logo-fg: var(--mat-sys-on-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--we-space-3);
+    font: var(--mat-sys-title-large);
+
+    &-mark {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--we-radius-control);
+      background: var(--logo-bg);
+      color: var(--logo-fg);
+    }
+  }
+
+  // ---------- Brand side ----------
+  &__brand {
+    display: none;
+
+    @include up(md) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      grid-column: 1;
+      grid-row: 1;
+      position: sticky;
+      top: 0;
+      height: 100dvh;
+      box-sizing: border-box;
+      overflow: hidden;
+      padding: var(--we-space-7) var(--we-space-6) calc(var(--we-space-7) + var(--we-space-5));
+      background: var(--mat-sys-primary);
+      color: var(--mat-sys-on-primary);
+
+      // Road-line motif
+      &::after {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        bottom: var(--we-space-6);
+        height: 4px;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--mat-sys-on-primary) 35%, transparent) 0 32px,
+          transparent 32px 64px
+        );
+      }
+    }
+
+    .auth__logo {
+      --logo-bg: var(--mat-sys-on-primary);
+      --logo-fg: var(--mat-sys-primary);
+    }
+  }
+
+  &__brand-title {
+    max-width: 16ch;
+    margin: 0;
+    font: var(--mat-sys-display-small);
+    font-weight: 600;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--we-space-4);
+    margin: var(--we-space-6) 0 0;
+    padding: 0;
+    list-style: none;
+    font: var(--mat-sys-body-large);
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--we-space-3);
+    }
+
+    mat-icon {
+      flex: none;
+      box-sizing: content-box;
+      padding: var(--we-space-2);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--mat-sys-on-primary) 16%, transparent);
+    }
+  }
+}

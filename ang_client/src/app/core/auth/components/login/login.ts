@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { loginSchema } from '../../schemas/auth.schemas';
 import { AuthService } from '../../services/auth.service';
 import { AuthStore } from '../../store/auth.store';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { MatFormField, MatLabel, MatPrefix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -11,7 +11,16 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatPrefix, MatInput, MatButton, MatIcon],
+  imports: [
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatPrefix,
+    MatInput,
+    MatButton,
+    MatIcon,
+    RouterLink,
+  ],
   selector: 'app-login',
   styleUrl: './login.scss',
   templateUrl: './login.html',

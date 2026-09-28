@@ -24,6 +24,6 @@ export class AuthService{
     }
 
     public registerUser(paylod:IRegister){
-        return this.http.post(`${this.baseUrl}/${API_ENDPOINTS.REGISTER}`,{paylod});
+        return this.http.post(`${this.baseUrl}/${API_ENDPOINTS.REGISTER}`,paylod);
     }
 }

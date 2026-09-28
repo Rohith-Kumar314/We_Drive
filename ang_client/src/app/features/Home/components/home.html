@@ -1,0 +1,69 @@
+<section class="hero">
+    <div class="hero__inner we-container">
+        <div class="hero__copy">
+            <h1>Book the right vehicle and the right driver.</h1>
+            <p class="hero__lead">
+                We_Drive connects riders, drivers, and vehicle owners on one platform, so every trip is
+                easy to book and easy to trust.
+            </p>
+            <div class="hero__actions">
+                <a mat-flat-button class="hero__primary" routerLink="/register">Create an account</a>
+                <a mat-stroked-button class="hero__secondary" routerLink="/login">Sign in</a>
+            </div>
+        </div>
+
+        <div class="trip" aria-hidden="true">
+            <p class="trip__eta">Driver arrives in 4 min</p>
+            <ol class="trip__route">
+                <li>Central Station</li>
+                <li>City Airport</li>
+            </ol>
+            <div class="trip__meta">
+                <span><mat-icon fontSet="material-symbols-outlined">directions_car</mat-icon>Sedan</span>
+                <span><mat-icon fontSet="material-symbols-outlined">star</mat-icon>4.9</span>
+                <span class="trip__price">₹640</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="roles we-container">
+    <h2>One platform, three ways to use it</h2>
+    <div class="roles__grid">
+        @for (role of roles; track role.title) {
+        <article class="role">
+            <mat-icon class="role__icon" fontSet="material-symbols-outlined" aria-hidden="true">{{ role.icon
+                }}</mat-icon>
+            <h3>{{ role.title }}</h3>
+            <p>{{ role.text }}</p>
+        </article>
+        }
+    </div>
+</section>
+
+<section class="steps">
+    <div class="we-container">
+        <h2>How it works</h2>
+        <ol class="steps__list">
+            @for (step of steps; track step.title; let i = $index) {
+            <li>
+                <span class="steps__num">{{ i + 1 }}</span>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.text }}</p>
+            </li>
+            }
+        </ol>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="cta__inner we-container">
+        <h2>Ready to get moving?</h2>
+        <a mat-flat-button routerLink="/register">Create an account</a>
+    </div>
+</section>
+
+<footer class="footer we-container">
+    <span>&copy; {{ currentYear }} We_Drive</span>
+    <span>Vehicles and drivers, booked in one place.</span>
+</footer>

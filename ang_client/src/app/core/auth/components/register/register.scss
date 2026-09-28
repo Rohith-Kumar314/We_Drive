@@ -1,0 +1,123 @@
+@use 'mixins' as *;
+
+:host {
+  display: block;
+}
+
+.role-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  &__legend {
+    padding: 0;
+    margin-bottom: var(--we-space-2);
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-label-large);
+  }
+
+  &__options {
+    display: grid;
+    gap: var(--we-space-3);
+
+    @include up(sm) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.role-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'icon title'
+    'icon text';
+  column-gap: var(--we-space-3);
+  align-items: center;
+  padding: var(--we-space-3) var(--we-space-4);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: var(--we-radius-card);
+  background: var(--mat-sys-surface);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease-out,
+    background-color 0.15s ease-out;
+
+  @include up(sm) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'icon'
+      'title'
+      'text';
+    row-gap: var(--we-space-1);
+    padding: var(--we-space-4);
+  }
+
+  &:hover {
+    border-color: var(--mat-sys-outline);
+  }
+
+  // Native radio stays focusable and clickable, but invisible
+  &__input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__icon {
+    grid-area: icon;
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  &__title {
+    grid-area: title;
+    color: var(--mat-sys-on-surface);
+    font: var(--mat-sys-title-small);
+  }
+
+  &__text {
+    grid-area: text;
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-small);
+  }
+
+  // Checkmark gives a non-color cue for the selected state
+  &__check {
+    position: absolute;
+    top: var(--we-space-2);
+    right: var(--we-space-2);
+    color: var(--mat-sys-primary);
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+  }
+
+  &:has(.role-card__input:checked) {
+    border-color: var(--mat-sys-primary);
+    box-shadow: inset 0 0 0 1px var(--mat-sys-primary);
+    background: var(--mat-sys-primary-container);
+
+    .role-card__icon,
+    .role-card__title {
+      color: var(--mat-sys-on-primary-container);
+    }
+
+    .role-card__text {
+      color: var(--mat-sys-on-primary-container);
+    }
+
+    .role-card__check {
+      opacity: 1;
+    }
+  }
+
+  &:has(.role-card__input:focus-visible) {
+    outline: 2px solid var(--mat-sys-primary);
+    outline-offset: 2px;
+  }
+}
